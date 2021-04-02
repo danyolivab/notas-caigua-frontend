@@ -1,0 +1,137 @@
+<div class="animate__animated animate__fadeIn">
+    <h3 class="text-light pb-2">Ingreso de Notas</h3>
+
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form #seleccionForm="ngForm">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12 col-sm-12">
+                                <label>Seleccione el Grado y Sección</label>
+                                <select class="form-control">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12 col-sm-12">
+                                <label>Seleccione el Curso</label>
+                                <select class="form-control">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+
+                        <div class="row mt-4">
+                            <div class="col-md-3 col-xs-6 col-sm-6">
+                                <label>Ponderación del Bloque</label>
+                                <select class="form-control">
+                                    <option>20 Puntos</option>
+                                    <option>30 Puntos</option>
+                                    <option>40 Puntos</option>
+                                    <option>100 Puntos</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6 col-sm-6">
+                                <label>Bloque</label>
+                                <select class="form-control">
+                                    <option>I Bloque</option>
+                                    <option>II Bloque</option>
+                                    <option>III Bloque</option>
+                                    <option>IV Bloque</option>
+                                    <option>Recuperación</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6 col-sm-6">
+                                <label>Tipo de Ingreso</label>
+                                <select class="form-control">
+                                    <option>Ordinario</option>
+                                    <option>Extraordinario</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 col-xs-6 col-sm-6 mt-2">
+                                <label></label>
+                               <button class="btn btn-success btn-block">Generar Listado</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                          <h4 class="text-success">Listado de Estudiantes</h4>
+                        </div>
+
+                        <form (submit)="obtenerValores()">
+                            <div class="card-body p-0">
+                              <div class="table-responsive">
+                                <table class="table table-striped" align="center">
+                                  <tr>
+                                    <th class="text-center">Clave</th>
+                                    <th>Apellidos y Nombre</th>
+                                    <th style="width: 15%; text-align: center;">Nota</th>
+                                    <th class="text-center">Pendiente/Retirado</th>
+                                    <th>Resultado</th>
+                                  </tr>
+    
+                                  <tr *ngFor="let nota of dataPrueba">
+                                      <td class="text-center">{{ nota.clave }}</td>
+                                      <td>{{ nota.nombre }}</td>
+                                      <td>
+                                          <input 
+                                            type="number" 
+                                            [name]="asignarIdNombreNota(nota.clave)" 
+                                            class="form-control" 
+                                            [id]="asignarIdNombreNota(nota.clave)"
+                                            (blur)="verificarStatus(nota.clave)"
+                                            max="20"
+                                            min="1"
+                                            >
+                                        </td>
+                                      <td class="text-center">
+                                        <div class="custom-checkbox custom-control">
+                                            <input 
+                                                type="checkbox" 
+                                                data-checkboxes="mygroup" 
+                                                class="custom-control-input" 
+                                                [id]="nota.clave"
+                                                (click)="notaPendiente(nota.clave)"
+                                            >
+                                            <label [for]="nota.clave" class="custom-control-label">&nbsp;</label>
+                                        </div>
+                                      </td>
+                                      <td style="width: 20%;">
+                                        <div class="badge badge-secondary" [id]="asignarIdStatus(nota.clave)">
+                                            <span [id]="asignarIdTextoStatus(nota.clave)">No Ingresada</span>
+                                        </div>
+                                      </td>
+                                  </tr>
+                                </table>
+    
+                              </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-success btn-block" type="submit" (click)="seleccionForm.reset()">Validar Notas</button>
+                            </div>
+                        </form>
+
+                      </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

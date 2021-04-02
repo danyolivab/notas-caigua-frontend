@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+.small {
+    font-size: small;
+    color: #767877;
+}
+
+.active {
+    font-weight: bold;
+    background-color: white !important;
+    color: #0DA524 !important;
+}

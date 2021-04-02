@@ -1,0 +1,25 @@
+<div class="main-sidebar">
+    <aside id="sidebar-wrapper">
+      
+      <div class="sidebar-brand">
+        <img src="../assets/img/college/caigua-logo-full.png" alt="" class="img-fluid" width="40px">
+        <a routerLink="/">CAIGUA</a>
+      </div>
+      
+      <div class="sidebar-brand sidebar-brand-sm">
+        <a routerLink="/">CA</a>
+      </div>
+
+      <ul class="sidebar-menu" *ngFor="let sidebarElement of sidebarElements">
+          
+        <li>
+          <a class="nav-link" [routerLink]="sidebarElement.route" routerLinkActive="active">
+            <i [class]="sidebarElement.icon"></i> 
+            <span>{{ sidebarElement.title }}</span>
+          </a>
+        </li>
+
+      </ul>   
+          
+    </aside>
+</div>

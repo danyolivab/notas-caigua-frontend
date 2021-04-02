@@ -1,0 +1,23 @@
+.card-primary {
+    border-top: 2px solid #0DA524;
+}
+
+h4 {
+    color: #0DA524 !important;
+}
+
+.btn-primary {
+    background-color: #0DA524;
+    border: #0DA524;
+}
+
+.btn-primary:hover {
+    background-color: #CAB81E !important;
+}
+
+.main {
+    background-image: 
+    linear-gradient(to top, rgba(22,136,33,0.2) 0%, rgba(74,179,11,0.4) 21%, rgba(0,214,144,0.8) 100%),
+    url("../../../assets/img/college/bg-caigua-2.jpg") !important;
+    background-size: cover;
+}
